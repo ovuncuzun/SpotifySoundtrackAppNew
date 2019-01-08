@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SpotifyService {
-
+  // spotify service
   queueSoundTracks =  []
 
   constructor(private http: HttpClient) { }
