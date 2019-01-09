@@ -2,22 +2,22 @@
   <div class="row imagetiles">
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=soundTrackImage1 class="img-responsive">
+              <img [src]=shuffledSoundTrackImages[0] (click)="startGuessing()" class="img-responsive">
           </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=soundTrackImage2 class="img-responsive" >
+              <img [src]=shuffledSoundTrackImages[1] (click)="startGuessing()" class="img-responsive" >
           </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=soundTrackImage3 class="img-responsive" >
+              <img [src]=shuffledSoundTrackImages[2] (click)="startGuessing()" class="img-responsive" >
           </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=soundTrackImage4 class="img-responsive">
+              <img [src]=shuffledSoundTrackImages[3] (click)="startGuessing()" class="img-responsive">
           </div>
       </div>
   </div>
