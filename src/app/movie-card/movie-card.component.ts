@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service';
+import { NotificationsService } from 'angular2-notifications'
 
 @Component({
   selector: 'app-movie-card',
@@ -10,13 +11,16 @@ export class MovieCardComponent implements OnInit {
 
   soundTracks: any[];
   currentSoundTrack: any;
+  currentMedia:any;
   soundTrackImage1: string = "";
   soundTrackImage2: string = "";
   soundTrackImage3: string = "";
   soundTrackImage4: string = "";
   shuffledSoundTrackImages: any[] = ["", "", "", ""]
 
-  constructor(private spotifyService: SpotifyService) { }
+
+  constructor(private spotifyService: SpotifyService, 
+    private notificationsService: NotificationsService) { }
 
   ngOnInit() {
     this.getSoundTracks()
@@ -80,21 +84,54 @@ export class MovieCardComponent implements OnInit {
   }
 
   playCurrentSoundTrack() {
-    let media = new Audio(this.currentSoundTrack.preview_url)
+
+    while(this.currentSoundTrack.preview_url == null) {
+      this.getNextSoundTrack()
+    }
+
+    this.currentMedia = new Audio(this.currentSoundTrack.preview_url)
+
     console.log(this.currentSoundTrack)
-    console.log(media)
+    console.log(this.currentMedia)
     return new Promise((resolve, reject) => { 
       if("loadeddata") {
         resolve('ok');
       } else {
         reject('error');
       }
-    }).then(x => media.play())
+    }).then(x => this.currentMedia.play())
 
   }
 
   startGuessing() {
+    this.getNextSoundTrack()
+  }
+
+  getNextSoundTrack() {
+    this.soundTracks.shift();
+    if(this.currentMedia) this.currentMedia.pause();
+    this.currentSoundTrack = this.soundTracks[0].track
+    this.getSoundTrackImages()
     this.playCurrentSoundTrack()
+
+  }
+
+
+  checkSoundTrack(soundTrackImageURL) {
+    if(soundTrackImageURL === this.currentSoundTrack.album.images[1].url) {
+      this.notificationsService.success("Well done!")
+      console.log("Well done")
+    } else {
+      this.notificationsService.error("Oh snap!")
+      console.log("Oh snap")
+    }
+
+    this.soundTracks.shift();
+    if(this.currentMedia) this.currentMedia.pause();
+    this.currentSoundTrack = this.soundTracks[0].track
+    this.getSoundTrackImages()
+    this.playCurrentSoundTrack()
+
   }
 
 }

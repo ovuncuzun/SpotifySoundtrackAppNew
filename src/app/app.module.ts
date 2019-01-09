@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule  } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -11,9 +13,14 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    SimpleNotificationsModule.forRoot()
+  
   ],
-  providers: [],
+  providers: [
+    NotificationsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

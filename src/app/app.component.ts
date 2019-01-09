@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SpotifySoundtrackAppNew';
+  public options={
+    position:["top","center"],
+    timeOut:750,
+    showProgressBar:false,
+    animate:"fromTop",
+    theClass:"alert-success"
+  }
 }

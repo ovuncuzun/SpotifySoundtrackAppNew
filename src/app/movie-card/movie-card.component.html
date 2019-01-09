@@ -2,23 +2,24 @@
   <div class="row imagetiles">
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=shuffledSoundTrackImages[0] (click)="startGuessing()" class="img-responsive">
+              <img [src]=shuffledSoundTrackImages[0] (click)="checkSoundTrack(shuffledSoundTrackImages[0])" class="img-responsive">
           </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=shuffledSoundTrackImages[1] (click)="startGuessing()" class="img-responsive" >
+              <img [src]=shuffledSoundTrackImages[1] (click)="checkSoundTrack(shuffledSoundTrackImages[1])" class="img-responsive" >
           </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=shuffledSoundTrackImages[2] (click)="startGuessing()" class="img-responsive" >
+              <img [src]=shuffledSoundTrackImages[2] (click)="checkSoundTrack(shuffledSoundTrackImages[2])" class="img-responsive" >
           </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
           <div class="item-image">
-              <img [src]=shuffledSoundTrackImages[3] (click)="startGuessing()" class="img-responsive">
+              <img [src]=shuffledSoundTrackImages[3] (click)="checkSoundTrack(shuffledSoundTrackImages[3])" class="img-responsive">
           </div>
       </div>
   </div>
+  <button class="btn btn-primary" (click) = startGuessing()>Start</button>
 </div>
